@@ -451,3 +451,227 @@ This detailed note should help you understand the basics of navigating files and
   ```
 
 These notes should give you a solid understanding of creating, copying, moving, and deleting files and directories, as well as using wildcards and organizing files efficiently in a Unix shell environment.
+
+### Chapter : 4 Pipes and Filters
+_Last updated on 2024-04-12 | Edit this page_
+
+---
+
+#### Overview
+
+**Questions:**
+1. How can I combine existing commands to produce a desired output?
+2. How can I show only part of the output?
+
+**Objectives:**
+1. Explain the advantage of linking commands with pipes and filters.
+2. Combine sequences of commands to get new output.
+3. Redirect a command’s output to a file.
+4. Explain what usually happens if a program or pipeline isn’t given any input to process.
+
+---
+
+### Introduction
+
+Now that we are familiar with some basic commands, we can explore one of the shell’s most powerful features: combining existing programs in new ways. We will use the `shell-lesson-data/exercise-data/alkanes` directory, which contains files in Protein Data Bank format, describing simple organic molecules.
+
+**Example Files in Directory:**
+```bash
+$ ls
+cubane.pdb    methane.pdb    pentane.pdb
+ethane.pdb    octane.pdb     propane.pdb
+```
+
+**Word Count Command:**
+```bash
+$ wc cubane.pdb
+```
+**Output:**
+```
+20  156 1158 cubane.pdb
+```
+`wc` (word count) counts lines, words, and characters in files.
+
+**Using Wildcards with `wc`:**
+```bash
+$ wc *.pdb
+```
+**Output:**
+```
+  20  156  1158  cubane.pdb
+  12  84   622   ethane.pdb
+   9  57   422   methane.pdb
+  30  246  1828  octane.pdb
+  21  165  1226  pentane.pdb
+  15  111  825   propane.pdb
+ 107  819  6081  total
+```
+`wc *.pdb` shows the total count of lines in the last line.
+
+**Displaying Only Line Counts:**
+```bash
+$ wc -l *.pdb
+```
+**Output:**
+```
+  20  cubane.pdb
+  12  ethane.pdb
+   9  methane.pdb
+  30  octane.pdb
+  21  pentane.pdb
+  15  propane.pdb
+ 107  total
+```
+The `-l` option shows only the number of lines per file.
+
+---
+
+### Handling Commands Without Input
+
+**Issue with Missing Filename:**
+```bash
+$ wc -l
+```
+If no filename is provided, `wc` waits for input from the command prompt. To exit this state, use `Ctrl+C`.
+
+---
+
+### Capturing Output from Commands
+
+**Redirecting Output to a File:**
+```bash
+$ wc -l *.pdb > lengths.txt
+```
+The `>` operator redirects the output to a file. If `lengths.txt` exists, it will be overwritten.
+
+**Displaying File Content:**
+```bash
+$ cat lengths.txt
+```
+**Output:**
+```
+  20  cubane.pdb
+  12  ethane.pdb
+   9  methane.pdb
+  30  octane.pdb
+  21  pentane.pdb
+  15  propane.pdb
+ 107  total
+```
+`cat` displays the content of files.
+
+**Viewing Content Page by Page:**
+```bash
+$ less lengths.txt
+```
+`less` allows scrolling through the file page by page.
+
+---
+
+### Filtering Output
+
+**Using `sort` Command:**
+**Example File (`numbers.txt`):**
+```
+10
+2
+19
+22
+6
+```
+**Sorting Numerically:**
+```bash
+$ sort -n numbers.txt
+```
+**Output:**
+```
+2
+6
+10
+19
+22
+```
+The `-n` option sorts numerically rather than alphanumerically.
+
+**Sorting and Redirecting:**
+```bash
+$ sort -n lengths.txt > sorted-lengths.txt
+$ head -n 1 sorted-lengths.txt
+```
+**Output:**
+```
+  9  methane.pdb
+```
+`head -n 1` shows the first line of the sorted file.
+
+**Important Note:**
+Avoid redirecting output to the same file being processed to prevent data loss.
+
+**Appending Data:**
+```bash
+$ echo hello >> testfile02.txt
+```
+`>>` appends output to a file.
+
+---
+
+### Passing Output to Another Command
+
+**Using Pipes:**
+```bash
+$ wc -l *.pdb | sort -n | head -n 1
+```
+The `|` operator pipes output from one command to another.
+
+**Combining Commands:**
+Pipes can chain multiple commands together to avoid using intermediate files.
+
+**Example:**
+```bash
+$ wc -l *.pdb | sort -n | head -n 3
+```
+This command finds the three files with the least number of lines.
+
+---
+
+### Tools Designed to Work Together
+
+Unix programs are designed to be simple and work well together using pipes and filters. Each program reads from standard input, processes the data, and writes to standard output.
+
+**Example Pipeline:**
+```bash
+$ cat animals.csv | head -n 5 | tail -n 3 | sort -r > final.txt
+```
+Understanding what passes through each stage of the pipeline is crucial.
+
+**Using `cut` and `uniq`:**
+```bash
+$ cut -d , -f 2 animals.csv | sort | uniq
+```
+The `cut` command extracts columns, and `uniq` removes duplicates.
+
+**Counting Animals:**
+```bash
+$ cut -d, -f 2 animals.csv | sort | uniq -c
+```
+The `-c` option with `uniq` counts occurrences.
+
+---
+
+### Summary
+
+- **`wc`**: Counts lines, words, and characters.
+- **`cat`**: Displays file contents.
+- **`sort`**: Sorts lines of text.
+- **`head`**: Displays the first few lines.
+- **`tail`**: Displays the last few lines.
+- **`>`**: Redirects output to a file (overwriting).
+- **`>>`**: Appends output to a file.
+- **`|`**: Pipes output from one command to another.
+- **Pipes and filters**: Combine simple tools to process data efficiently.
+
+Use pipes and filters to link simple programs together, leveraging their ability to process and transform data streams.
+
+---
+
+Feel free to ask if you need further details or explanations!
