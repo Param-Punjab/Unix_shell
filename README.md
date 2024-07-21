@@ -916,3 +916,162 @@ done
 ---
 
 These notes cover the essentials of loops, their usage, and practical examples to enhance your shell scripting skills.
+
+# Chapter : 6 Shell Scripts
+
+**Last updated on 2023-08-05**
+
+---
+
+#### Overview
+
+Shell scripts are a powerful way to automate repetitive tasks by saving a series of commands in a file. This file can then be executed to run the commands as a program. Shell scripts enhance efficiency, accuracy, and reproducibility, making them a valuable tool for managing command-line operations.
+
+#### Objectives
+
+1. **Write a shell script to execute commands on a fixed set of files.**
+2. **Run a shell script from the command line.**
+3. **Create a script that operates on files specified by the user.**
+4. **Incorporate shell scripts into pipelines for more complex operations.**
+
+#### Creating and Running a Shell Script
+
+1. **Creating a Basic Script**
+
+   Start by creating a new file called `middle.sh` in the `alkanes/` directory:
+
+   ```bash
+   $ cd alkanes
+   $ nano middle.sh
+   ```
+
+   Insert the following line into `middle.sh`:
+
+   ```bash
+   head -n 15 octane.pdb | tail -n 5
+   ```
+
+   Save the file (Ctrl-O) and exit (Ctrl-X). Execute the script with:
+
+   ```bash
+   $ bash middle.sh
+   ```
+
+   This command will output lines 11 to 15 from `octane.pdb`.
+
+2. **Using Variables in Scripts**
+
+   To make the script more flexible, edit `middle.sh` to use a variable for the filename:
+
+   ```bash
+   $ nano middle.sh
+   head -n 15 "$1" | tail -n 5
+   ```
+
+   Run the script with:
+
+   ```bash
+   $ bash middle.sh octane.pdb
+   ```
+
+   You can now use different filenames:
+
+   ```bash
+   $ bash middle.sh pentane.pdb
+   ```
+
+3. **Handling Multiple Arguments**
+
+   Modify `middle.sh` to handle additional arguments for line ranges:
+
+   ```bash
+   $ nano middle.sh
+   head -n "$2" "$1" | tail -n "$3"
+   ```
+
+   Run the script with:
+
+   ```bash
+   $ bash middle.sh pentane.pdb 15 5
+   ```
+
+   This will extract lines 15 through 19 from `pentane.pdb`.
+
+4. **Adding Comments**
+
+   Improve readability by adding comments at the top of `middle.sh`:
+
+   ```bash
+   $ nano middle.sh
+   # Select lines from the middle of a file.
+   # Usage: bash middle.sh filename end_line num_lines
+   head -n "$2" "$1" | tail -n "$3"
+   ```
+
+#### Advanced Scripting Techniques
+
+1. **Processing Multiple Files**
+
+   Create a script `sorted.sh` to sort files by their length:
+
+   ```bash
+   $ nano sorted.sh
+   # Sort files by their length.
+   # Usage: bash sorted.sh one_or_more_filenames
+   wc -l "$@" | sort -n
+   ```
+
+   Run the script with:
+
+   ```bash
+   $ bash sorted.sh *.pdb ../creatures/*.dat
+   ```
+
+2. **Listing Unique Species**
+
+   Write `species.sh` to list unique species from multiple files:
+
+   ```bash
+   $ nano species.sh
+   # List unique species from files.
+   # Usage: bash species.sh filename1 filename2 ...
+   cut -d , -f 2 "$@" | sort | uniq
+   ```
+
+   Run the script with:
+
+   ```bash
+   $ bash species.sh animals.csv
+   ```
+
+3. **Re-creating Commands from History**
+
+   Save recent commands to a script:
+
+   ```bash
+   $ history | tail -n 5 > redo-figure-3.sh
+   ```
+
+   Edit `redo-figure-3.sh` to remove history command numbers and extra lines.
+
+#### Handling Script Errors
+
+1. **Debugging Scripts**
+
+   If a script produces no output, use the `-x` option to debug:
+
+   ```bash
+   $ bash -x do-errors.sh NENE*A.txt NENE*B.txt
+   ```
+
+   The `-x` option will show the commands being executed, helping to identify errors.
+
+#### Key Points
+
+- **Saving Commands**: Store frequently used commands in shell scripts for easy re-use.
+- **Running Scripts**: Execute scripts using `bash [filename]`.
+- **Arguments**: Use `$@` for all command-line arguments and `$1`, `$2`, etc., for specific arguments.
+- **Quoting Variables**: Always quote variables to handle spaces in filenames and other arguments.
+- **Flexibility**: Allow users to specify files or parameters to increase script versatility.
+
+Shell scripts can greatly streamline workflows, making repetitive tasks more efficient and less prone to errors. By leveraging the power of scripting, you can automate complex operations and ensure consistency in your command-line tasks.
