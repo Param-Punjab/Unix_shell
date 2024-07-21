@@ -675,3 +675,244 @@ Use pipes and filters to link simple programs together, leveraging their ability
 ---
 
 Feel free to ask if you need further details or explanations!
+
+# Detailed Notes on Loops
+
+**Last updated on 2023-11-10 | Edit this page**
+
+---
+
+## OVERVIEW
+
+Loops in programming allow for the repetition of commands or sets of commands for each item in a list. This feature enhances productivity through automation by reducing the need for manual repetition and minimizing typing errors.
+
+---
+
+## QUESTIONS
+
+### How can I perform the same actions on many different files?
+You can use loops to apply one or more commands to each file in a set.
+
+### Objectives
+- Write a loop to apply commands to a set of files.
+- Trace the values of a loop variable during loop execution.
+- Understand the difference between a variable’s name and its value.
+- Explain why spaces and some punctuation characters should be avoided in file names.
+- Demonstrate how to view and re-run recently executed commands.
+
+---
+
+## Chapter : 5 LOOPS IN SHELL
+
+### Basic Structure
+
+A loop in shell scripting is generally used to repeat commands for each item in a list. Here’s the basic structure of a `for` loop:
+
+```bash
+for variable in list_of_items
+do
+    command_using $variable
+done
+```
+
+- `for`: Indicates the start of the loop.
+- `variable`: Holds the current item from the list in each iteration.
+- `do`: Starts the block of commands to be executed for each item.
+- `done`: Ends the loop.
+
+### Example
+
+Suppose we have several files: `basilisk.dat`, `minotaur.dat`, `unicorn.dat`. We want to print out the classification for each species (given on the second line of each file). Here’s how a loop can solve this:
+
+```bash
+for filename in basilisk.dat minotaur.dat unicorn.dat
+do
+    echo $filename
+    head -n 2 $filename | tail -n 1
+done
+```
+
+**Output:**
+
+```plaintext
+basilisk.dat
+CLASSIFICATION: basiliscus vulgaris
+minotaur.dat
+CLASSIFICATION: bos hominus
+unicorn.dat
+CLASSIFICATION: equus monoceros
+```
+
+### Prompt Behavior
+
+- The shell prompt changes from `$` to `>` to indicate that a multi-line command is being entered.
+- The `;` can be used to separate commands on a single line.
+
+### Variable Expansion
+
+Inside a loop, the `$` symbol is used to refer to the value of a variable. For instance, `$filename` gets replaced with the current filename during each iteration.
+
+### Naming Variables
+
+- **Good Practice:** Use meaningful names (e.g., `filename`).
+- **Avoid:** Using generic names like `x` or misleading names like `temperature`.
+
+### Looping Over Different Lists
+
+Loops can handle different types of lists, including filenames, numbers, or other data subsets.
+
+---
+
+## VARIABLES IN LOOPS
+
+### Loop Over File Extensions
+
+Example: Listing files with `.pdb` extension:
+
+```bash
+for datafile in *.pdb
+do
+    ls $datafile
+done
+```
+
+- **First Loop:** `ls *.pdb` lists all `.pdb` files in each iteration.
+- **Second Loop:** `ls $datafile` lists individual files, expanding each file’s name.
+
+### Limiting Sets of Files
+
+To limit the files processed:
+
+```bash
+for filename in c*
+do
+    ls $filename
+done
+```
+
+- **Output:** Only files starting with `c` are listed.
+
+Using wildcards like `*c*` can match different patterns:
+
+```bash
+for filename in *c*
+do
+    ls $filename
+done
+```
+
+- **Output:** Matches files with `c` anywhere in the name.
+
+---
+
+## SAVING TO A FILE IN A LOOP
+
+### Part One
+
+If you save the content of each file into `alkanes.pdb`:
+
+```bash
+for alkanes in *.pdb
+do
+    echo $alkanes
+    cat $alkanes > alkanes.pdb
+done
+```
+
+- **Result:** Only the content from the last file (`propane.pdb`) is saved to `alkanes.pdb`.
+
+### Part Two
+
+Appending content to `all.pdb`:
+
+```bash
+for datafile in *.pdb
+do
+    cat $datafile >> all.pdb
+done
+```
+
+- **Result:** All `.pdb` file contents are concatenated and saved to `all.pdb`.
+
+---
+
+## MORE COMPLEX EXAMPLES
+
+### Example Loop
+
+To select lines 81-100 from each file:
+
+```bash
+for filename in *.dat
+do
+    echo $filename
+    head -n 100 $filename | tail -n 20
+done
+```
+
+- **Purpose:** Prints filenames and specific lines from each file.
+
+### Handling Spaces in Filenames
+
+For filenames with spaces, use quotes:
+
+```bash
+for filename in "red dragon.dat" "purple unicorn.dat"
+do
+    head -n 100 "$filename" | tail -n 20
+done
+```
+
+- **Without Quotes:** Errors occur due to spaces being treated as delimiters.
+
+### Backing Up Files
+
+To copy files with a prefix:
+
+```bash
+for filename in *.dat
+do
+    cp $filename original-$filename
+done
+```
+
+- **Purpose:** Creates backup copies with the prefix `original-`.
+
+---
+
+## NELLE’S PIPELINE: PROCESSING FILES
+
+Nelle builds up commands for processing data files with `goostats.sh`. She uses history commands and arrow keys to edit and re-run previous commands.
+
+### Using History Commands
+
+- **`history`**: Displays recent commands.
+- **`!number`**: Repeats a command by number.
+- **`!!`**: Repeats the last command.
+- **`!$`**: Refers to the last argument of the previous command.
+- **Ctrl+R**: Searches command history.
+
+### Example with `goostats.sh`
+
+```bash
+for datafile in NENE*A.txt NENE*B.txt
+do
+    bash goostats.sh $datafile stats-$datafile
+done
+```
+
+- **Result:** Processes files and generates corresponding output filenames.
+
+---
+
+## KEY POINTS
+
+- **For Loops:** Repeat commands for each item in a list.
+- **Variables:** Use `$variable` to expand variable values.
+- **File Names:** Avoid spaces and special characters to simplify variable expansion.
+- **History Commands:** Use history and shortcuts to repeat or search previous commands.
+- **Dry Runs:** Echo commands to preview what would be executed without running them.
+
+---
+
+These notes cover the essentials of loops, their usage, and practical examples to enhance your shell scripting skills.
