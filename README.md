@@ -1,3 +1,96 @@
+# Chapter 1: Introducing the Shell
+
+## Overview
+
+### Questions
+- What is a command shell and why would I use one?
+
+### Objectives
+- Explain how the shell relates to the keyboard, the screen, the operating system, and users' programs.
+- Explain when and why command-line interfaces should be used instead of graphical interfaces.
+
+## Background
+Humans and computers interact in various ways, such as through:
+- Keyboard and mouse
+- Touch screen interfaces
+- Speech recognition systems
+
+### Graphical User Interface (GUI)
+- The most widely used method to interact with personal computers.
+- Uses menu-driven interactions and mouse clicks.
+- Intuitive but scales poorly for repetitive tasks.
+
+### Command-Line Interface (CLI)
+- Uses text-based commands.
+- Scales well for repetitive tasks.
+
+### Example
+Using a GUI to copy the third line of 1000 text files in different directories is time-consuming and error-prone. The Unix shell, a CLI, can automate and speed up this process.
+
+## The Shell
+- A program where users type commands.
+- Can invoke complex programs or simple commands.
+- Popular Unix shell: Bash (Bourne Again SHell).
+- Git Bash: Allows Windows users to use a Bash-like interface with Git.
+
+### Learning the Shell
+- Requires time and effort.
+- Unlike a GUI, CLI requires learning specific commands.
+- A few essential commands can accomplish a lot.
+
+### Advantages of the Shell
+- Combines existing tools into powerful pipelines.
+- Handles large volumes of data automatically.
+- Scripts improve workflow reproducibility.
+- Easier interaction with remote machines and supercomputers.
+- Essential for specialized tools and high-performance computing.
+
+## Getting Started with the Shell
+
+### The Prompt
+- Indicates the shell is waiting for input.
+- Usually represented by `$`.
+- Do not type the `$` when entering commands.
+- The cursor indicates the typing position.
+
+### Example
+```bash
+$ ls
+```
+- Lists contents of the current directory.
+- If a command is not found, an error message is displayed.
+
+### Common Error
+```bash
+$ ks
+ks: command not found
+```
+- Occurs if the command is mistyped or not installed.
+
+## Nelle's Pipeline: A Typical Problem
+Nelle Nemo, a marine biologist, needs to process 1520 samples using an imaginary program `goostats.sh`.
+
+### Problem
+- Running `goostats.sh` by hand using a GUI takes over 12 hours.
+- Using the shell, Nelle can automate this task and focus on writing her paper.
+
+### Skills Nelle Needs
+- Navigate to a file/directory
+- Create a file/directory
+- Check the length of a file
+- Chain commands together
+- Retrieve a set of files
+- Iterate over files
+- Run a shell script containing her pipeline
+
+## Key Points
+- A shell reads commands and runs other programs.
+- This lesson uses Bash, the default shell in many Unix implementations.
+- Programs run in Bash by entering commands at the command-line prompt.
+- The shell has a high action-to-keystroke ratio, supports automating repetitive tasks, and accesses networked machines.
+- A significant challenge is knowing which commands to run and how to run them.
+
+
 # Chapter 2: Navigating Files and Directories
 
 ## Questions
