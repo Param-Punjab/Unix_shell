@@ -36,7 +36,7 @@ Using a GUI to copy the third line of 1000 text files in different directories i
 ### Learning the Shell
 - Requires time and effort.
 - Unlike a GUI, CLI requires learning specific commands.
-- A few essential commands can accomplish a lot.
+- A few essential commands can achieve a lot.
 
 ### Advantages of the Shell
 - Combines existing tools into powerful pipelines.
