@@ -280,3 +280,174 @@ Nelle Nemo, a marine biologist, needs to process 1520 samples using an imaginary
 - `.` means the current directory; `..` means the parent directory.
 
 This detailed note should help you understand the basics of navigating files and directories in the shell. Practice these commands and explore your file system to become more comfortable with these concepts.
+
+# Notes on "Working With Files and Directories"
+
+### Overview
+- **Key Questions:**
+  1. How can I create, copy, and delete files and directories?
+  2. How can I edit files?
+- **Objectives:**
+  1. Create a directory hierarchy that matches a given diagram.
+  2. Create files in that hierarchy using an editor or by copying and renaming existing files.
+  3. Delete, copy, and move specified files and/or directories.
+
+### Creating Directories
+- **Checking Current Directory:**
+  ```bash
+  $ pwd
+  /Users/nelle/Desktop/shell-lesson-data
+  ```
+
+- **Navigating to a Directory:**
+  ```bash
+  $ cd exercise-data/writing/
+  $ ls -F
+  haiku.txt  LittleWomen.txt
+  ```
+
+- **Creating a New Directory:**
+  ```bash
+  $ mkdir thesis
+  $ ls -F
+  haiku.txt  LittleWomen.txt  thesis/
+  ```
+
+- **Creating Nested Directories:**
+  ```bash
+  $ mkdir -p ../project/data ../project/results
+  $ ls -FR ../project
+  ../project/:
+  data/  results/
+  ../project/data:
+  ../project/results:
+  ```
+
+### Good Naming Practices for Files and Directories
+- **Avoid spaces**: Use `-` or `_` instead.
+- **Do not begin with `-`**: Commands treat names starting with `-` as options.
+- **Use letters, numbers, `.`, `-`, and `_`**: Avoid special characters unless necessary.
+- **Referencing Special Names**: Surround names with spaces or special characters in single quotes (`'`).
+
+### Creating Text Files
+- **Changing Directory and Using a Text Editor:**
+  ```bash
+  $ cd thesis
+  $ nano draft.txt
+  ```
+- **Saving and Exiting in Nano:**
+  - Save: `Ctrl + O`, then `Enter`.
+  - Exit: `Ctrl + X`.
+
+- **Creating Files with `touch`:**
+  ```bash
+  $ touch my_file.txt
+  $ ls -l my_file.txt
+  $ rm my_file.txt
+  ```
+
+### Naming Conventions
+- Use file extensions to indicate file types (`.txt`, `.pdf`, `.cfg`, `.png`, etc.).
+
+### Moving Files and Directories
+- **Renaming Files with `mv`:**
+  ```bash
+  $ mv thesis/draft.txt thesis/quotes.txt
+  $ ls thesis
+  quotes.txt
+  ```
+
+- **Moving Files to Another Directory:**
+  ```bash
+  $ mv thesis/quotes.txt .
+  $ ls thesis
+  $ ls quotes.txt
+  quotes.txt
+  ```
+
+- **Moving Files to Another Folder:**
+  ```bash
+  $ mv sucrose.dat maltose.dat ../raw/
+  ```
+
+### Copying Files and Directories
+- **Copying Files with `cp`:**
+  ```bash
+  $ cp quotes.txt thesis/quotations.txt
+  $ ls quotes.txt thesis/quotations.txt
+  quotes.txt   thesis/quotations.txt
+  ```
+
+- **Copying Directories with `cp -r`:**
+  ```bash
+  $ cp -r thesis thesis_backup
+  $ ls thesis thesis_backup
+  thesis:
+  quotations.txt
+  thesis_backup:
+  quotations.txt
+  ```
+
+### Removing Files and Directories
+- **Deleting Files with `rm`:**
+  ```bash
+  $ rm quotes.txt
+  $ ls quotes.txt
+  ls: cannot access 'quotes.txt': No such file or directory
+  ```
+
+- **Deleting Directories with `rm -r`:**
+  ```bash
+  $ rm -r thesis
+  ```
+
+### Operations with Multiple Files and Directories
+- **Copying Multiple Files:**
+  ```bash
+  $ mkdir backup
+  $ cp creatures/minotaur.dat creatures/unicorn.dat backup/
+  ```
+
+- **Wildcards:**
+  - `*`: Represents zero or more characters.
+  - `?`: Represents exactly one character.
+  - Combining Wildcards: `???ane.pdb` matches `cubane.pdb`, `ethane.pdb`, `octane.pdb`.
+
+- **Examples of Using Wildcards:**
+  ```bash
+  $ ls *t*ane.pdb
+  ethane.pdb methane.pdb
+  ```
+
+### Practical Exercises
+- **Move and Organize Files:**
+  ```bash
+  $ mkdir recombined
+  $ mv proteins.dat recombined/
+  $ cp recombined/proteins.dat ../proteins-saved.dat
+  ```
+
+- **Back Up and Send Files:**
+  ```bash
+  $ cp *dataset* backup/datasets
+  $ cp *calibration* backup/calibration
+  $ cp 2015-11-* send_to_bob/all_november_files/
+  $ cp 2015-10-23-* send_to_bob/all_datasets_created_on_a_23rd/
+  ```
+
+- **Organizing Files in Directories:**
+  ```bash
+  $ mv fructose.dat analyzed/
+  $ mv sucrose.dat analyzed/
+  ```
+
+- **Duplicating Directory Structure:**
+  ```bash
+  $ mkdir 2016-05-20
+  $ cd 2016-05-20
+  $ mkdir data
+  $ cd data
+  $ mkdir raw processed
+  ```
+
+These notes should give you a solid understanding of creating, copying, moving, and deleting files and directories, as well as using wildcards and organizing files efficiently in a Unix shell environment.
