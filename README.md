@@ -19,9 +19,6 @@
 - ### Installing Files and packages:
   ![Error 404](https://media.geeksforgeeks.org/wp-content/uploads/20200123114452/VirtualBox-Windows-Installation-05.png)
 
-- ### Installing Certificates:
-  ![Error 404](https://media.geeksforgeeks.org/wp-content/uploads/20200123114456/VirtualBox-Windows-Installation-06.png)
-
 - ### Finished Installation:
   ![Error 404](https://media.geeksforgeeks.org/wp-content/uploads/20200123114501/VirtualBox-Windows-Installation-07.png)
 
