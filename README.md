@@ -27,18 +27,13 @@
 
 # How to Install Debian 12 on VirtualBox
 
-### Benefits of Creating a Virtual Machine
-- **Isolation**: Each virtual machine operates independently.
-- **Efficiency**: Better utilization of physical resources.
-- **Resource Sharing**: Multiple VMs can share the same physical hardware.
-- **Versatility**: Can run different OS versions and configurations.
-
 ### Pre-requisite
 - Download the Debian 12 ISO file from its [official website](https://www.debian.org/).
 
 ### Step 1: Create a Debian 12 Virtual Machine
 
 1. **Open VirtualBox** and click on the **New** button.
+   ![Error 404](https://ml9xdkwhf8c0.i.optimole.com/w:829/h:527/q:mauto/f:best/https://itslinuxguide.com/wp-content/uploads/2024/03/word-image-182-1.png)
 
 2. **Enter VM Name and Location**:
    - Name: Debian 12
@@ -46,15 +41,23 @@
    - Type: Linux
    - Version: Debian (64-bit)
 
+![Error 404](https://ml9xdkwhf8c0.i.optimole.com/w:810/h:521/q:mauto/f:best/https://itslinuxguide.com/wp-content/uploads/2024/03/word-image-182-2.png)
+
 3. **Allocate System Resources**:
    - **Memory (RAM)**: Recommended at least 2 GB
    - **CPUs**: Allocate at least 2 CPUs
 
+![Error 404](https://ml9xdkwhf8c0.i.optimole.com/w:790/h:520/q:mauto/f:best/https://itslinuxguide.com/wp-content/uploads/2024/03/word-image-182-3.png)
+
 4. **Set Storage Space**:
    - Recommended: 20 GB (Adjust if needed for more applications)
 
+![Error 404](https://ml9xdkwhf8c0.i.optimole.com/w:812/h:522/q:mauto/f:best/https://itslinuxguide.com/wp-content/uploads/2024/03/word-image-182-4.png)
+
 5. **Verify and Create**:
    - Review all the settings and click on **Create**.
+
+![Error 404](https://ml9xdkwhf8c0.i.optimole.com/w:797/h:509/q:mauto/f:best/https://itslinuxguide.com/wp-content/uploads/2024/03/word-image-182-5.png)
 
 ### Step 2: Install Debian 12 on VirtualBox
 
