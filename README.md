@@ -1,3 +1,32 @@
+## Downloading  VirtualBox
+
+- To download VirtualBox, go to the official site virtualbox.org and download the latest version for windows.
+  !(How to download virtual box)[https://media.geeksforgeeks.org/wp-content/uploads/20200123114435/VirtualBox-Windows-Download.png]
+
+## Beginning with the Installation:  
+- Getting Started:
+  !(Error 404)[https://media.geeksforgeeks.org/wp-content/uploads/20200123114440/VirtualBox-Windows-Installation-01.png]
+
+- Select Installation Location:
+  !(Error 404)[https://media.geeksforgeeks.org/wp-content/uploads/20200123114443/VirtualBox-Windows-Installation-02.png]
+  
+- Creating Entries and Shortcuts:
+ !(Error 404)[https://media.geeksforgeeks.org/wp-content/uploads/20200123114446/VirtualBox-Windows-Installation-03.png]
+
+- Ready to Install:
+ !(Error 404)[https://media.geeksforgeeks.org/wp-content/uploads/20200123114449/VirtualBox-Windows-Installation-04.png]
+
+- Installing Files and packages:
+  !(Error 404)[https://media.geeksforgeeks.org/wp-content/uploads/20200123114452/VirtualBox-Windows-Installation-05.png]
+
+- Installing Certificates:
+  !(Error 404)[https://media.geeksforgeeks.org/wp-content/uploads/20200123114456/VirtualBox-Windows-Installation-06.png]
+
+- Finished Installation:
+  !(Error 404)[https://media.geeksforgeeks.org/wp-content/uploads/20200123114501/VirtualBox-Windows-Installation-07.png]
+
+## When you will open virtualbox it will look like as shown below:
+!(Error 404)[https://media.geeksforgeeks.org/wp-content/uploads/20200123114507/VirtualBox-Windows-Installation-08.png]
 # Chapter 1: Introducing the Shell
 
 ## Overview
