@@ -24,6 +24,105 @@
 
 ## When you will open virtualbox it will look like as shown below:
   ![Error 404](https://media.geeksforgeeks.org/wp-content/uploads/20200123114507/VirtualBox-Windows-Installation-08.png)
+
+# How to Install Debian 12 on VirtualBox
+
+### Benefits of Creating a Virtual Machine
+- **Isolation**: Each virtual machine operates independently.
+- **Efficiency**: Better utilization of physical resources.
+- **Resource Sharing**: Multiple VMs can share the same physical hardware.
+- **Versatility**: Can run different OS versions and configurations.
+
+### Pre-requisite
+- Download the Debian 12 ISO file from its [official website](https://www.debian.org/).
+
+### Step 1: Create a Debian 12 Virtual Machine
+
+1. **Open VirtualBox** and click on the **New** button.
+
+2. **Enter VM Name and Location**:
+   - Name: Debian 12
+   - Location: Choose your preferred folder
+   - Type: Linux
+   - Version: Debian (64-bit)
+
+3. **Allocate System Resources**:
+   - **Memory (RAM)**: Recommended at least 2 GB
+   - **CPUs**: Allocate at least 2 CPUs
+
+4. **Set Storage Space**:
+   - Recommended: 20 GB (Adjust if needed for more applications)
+
+5. **Verify and Create**:
+   - Review all the settings and click on **Create**.
+
+### Step 2: Install Debian 12 on VirtualBox
+
+1. **Start the VM**:
+   - Click on the **Start** button.
+
+2. **Mount ISO File**:
+   - If not already linked, add the ISO file path and click on **Mount and Retry Boot**.
+
+3. **Select Installation Type**:
+   - Choose **Graphical install**.
+
+4. **Language Selection**:
+   - Choose the language for the installation process.
+
+5. **Location Selection**:
+   - Set your location for time zone configuration.
+
+6. **Keyboard Layout**:
+   - Choose the appropriate keyboard layout based on your language.
+
+7. **Configure Network**:
+   - **Hostname**: Enter a name for your system.
+   - **Domain Name**: Enter if applicable or leave it blank.
+
+8. **Additional Installation Files**:
+   - Select **No** if no additional files are needed.
+
+9. **Mirror Location**:
+   - Select the nearest country for the Debian mirror list.
+
+10. **Debian Archive Mirror**:
+    - Choose the default mirror if no preference.
+
+11. **Proxy Information**:
+    - Enter if needed, otherwise leave blank.
+
+12. **Begin Installation**:
+    - Wait for the installation process (can take up to 30 minutes).
+
+13. **Create Admin User**:
+    - Set up an admin user and password.
+
+14. **Create Normal User**:
+    - Create another user without admin rights if needed.
+
+15. **Set Time Zone**:
+    - Select the appropriate time zone based on your location.
+
+16. **Partition Disks**:
+    - Choose to manually create partitions or use the entire disk.
+
+17. **Format Disk**:
+    - Confirm the partition scheme and format the disk.
+
+18. **Popularity Contest**:
+    - Choose whether to send system statistics to the Debian community.
+
+19. **Select Desktop Environment**:
+    - Choose a desktop environment (e.g., GNOME).
+
+20. **Install GRUB Bootloader**:
+    - Install GRUB to manage the boot process.
+
+21. **Reboot System**:
+    - Complete the installation by rebooting the system.
+
+Following these steps will help you successfully install Debian 12 on VirtualBox, allowing you to explore and utilize the Debian operating system in a virtual environment.
   
 # Chapter 1: Introducing the Shell
 
