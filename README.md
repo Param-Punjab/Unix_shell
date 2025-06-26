@@ -33,7 +33,7 @@
 ### Step 1: Create a Debian 12 Virtual Machine
 
 1. **Open VirtualBox** and click on the **New** button.
-   ![Error 404](https://ml9xdkwhf8c0.i.optimole.com/w:829/h:527/q:mauto/f:best/https://itslinuxguide.com/wp-content/uploads/2024/03/word-image-182-1.png)
+   ![Error 404](https://www.nakivo.com/blog/wp-content/uploads/2019/06/How-to-use-VirtualBox-%E2%80%93-Starting-a-virtual-machine.webp)
 
 2. **Enter VM Name and Location**:
    - Name: Debian 12
